@@ -13,5 +13,7 @@ public class App
 	        Nomina nomina = new Nomina();
 	        
 	        nomina.ImprimirNomina();
+	        
+	        nomina.LeerRecibos();
 	    }
 }
