@@ -1,0 +1,14 @@
+/.metadata/
+padre/amazon/.settings/
+padre/.settings/
+*.class
+padre/amazon/target/
+padre/estandar/target/
+.sonarlint/
+pepe.jar
+padre/.project
+padre/estandar/.project
+padre/estandar/.classpath
+padre/amazon/.classpath
+padre/amazon/.project
+padre/estandar/.settings/
