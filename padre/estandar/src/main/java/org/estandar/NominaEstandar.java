@@ -5,11 +5,11 @@ public class NominaEstandar implements NominaEstandarInterface {
 		super();
 	}
 
-	public String ImprimirNomina() {
+	public String imprimirNominaEstandar() {
 		return ("Imprimiendo Nomina estandar");
 	}
 
-	public String LeerRecibos() {
+	public String leerRecibosEstandar() {
 		return ("Leyendo recibos estandar");
 	}
 }

@@ -10,12 +10,18 @@ public class App {
 
     public static void main(final String[] args) {
         final NominaEstandarInterface nomina = new NominaEstandar();
+        
+        String cadena ="";
 
         LOGGER.debug("App Estandar");
 
-        LOGGER.debug(nomina.ImprimirNomina());
-
-        LOGGER.debug(nomina.LeerRecibos());
+        cadena = nomina.imprimirNominaEstandar();
+        
+        LOGGER.debug(cadena);
+        
+        cadena = nomina.leerRecibosEstandar();
+        
+        LOGGER.debug(cadena);
 
     }
 

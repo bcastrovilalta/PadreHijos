@@ -10,12 +10,18 @@ public class App {
 
     public static void main(String[] args) {
         final NominaAmazonInterface nomina = new NominaAmazon();
+        
+        String cadena ="";
 
         LOGGER.debug("App Amazon");
 
-        LOGGER.debug(nomina.ImprimirNomina());
-
-        LOGGER.debug(nomina.LeerRecibos());
+        cadena = nomina.imprimirNominaAmazon();
+        
+        LOGGER.debug(cadena);
+        
+        cadena = nomina.leerRecibosAmazon();
+        
+        LOGGER.debug(cadena);
 
     }
 

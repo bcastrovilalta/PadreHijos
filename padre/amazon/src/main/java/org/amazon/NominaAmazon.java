@@ -11,12 +11,12 @@ public class NominaAmazon implements NominaAmazonInterface {
         ne = new NominaEstandar();
     }
 
-    public String ImprimirNomina() {
+    public String imprimirNominaAmazon() {
         return ("Imprimiendo Nomina Amazon");
     }
 
-    public String LeerRecibos() {
-        return (ne.LeerRecibos());
+    public String leerRecibosAmazon() {
+        return (ne.leerRecibosEstandar());
     }
 
 }
