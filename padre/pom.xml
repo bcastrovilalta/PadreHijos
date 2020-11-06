@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.seresco</groupId>
@@ -17,21 +17,25 @@
 		<!-- ============================================== -->
 		<!-- =========== DEPENDENCIES VERSIONS ============ -->
 		<!-- ============================================== -->
-		<junit.jupiter.version>5.6.2</junit.jupiter.version>
-		<log4j.version>2.13.3</log4j.version>
-		<slf4j.version>1.7.30</slf4j.version>   
+		<junit.jupiter.version>5.7.0</junit.jupiter.version>
+		<log4j.version>2.3</log4j.version>
+		<slf4j.version>1.7.12</slf4j.version>   
 		<spring.boot.version>2.3.1.RELEASE</spring.boot.version>
 		<plugin.spring.boot.version>${spring.boot.version}</plugin.spring.boot.version>        
 	</properties>
  
  	<build>
-     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+     <pluginManagement>
+      <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
           <plugin>
              <!-- Spring Boot -->
              <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-maven-plugin</artifactId>
              <version>${plugin.spring.boot.version}</version>
+             <configuration>
+             	<mainClass>${main.path}</mainClass>
+             </configuration>
           </plugin>      
       </plugins>
     </pluginManagement>
@@ -53,20 +57,51 @@
                   </configuration>
                </execution>
             </executions>
-         </plugin>      
+         </plugin>    
+         
+          <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-assembly-plugin</artifactId>
+		    <executions>
+		        <execution>
+		            <phase>package</phase>
+		            <goals>
+		                <goal>single</goal>
+		            </goals>
+		            <configuration>
+		                <archive>
+		                <manifest>
+		                    <mainClass>
+		                        ${main.path}
+		                    </mainClass>
+		                </manifest>
+		                </archive>
+		                <descriptorRefs>
+		                    <descriptorRef>jar-with-dependencies</descriptorRef>
+		                </descriptorRefs>
+		                <appendAssemblyId>true</appendAssemblyId>
+		            </configuration>
+		        </execution>
+		    </executions>
+		</plugin>   
+		<plugin>
+	    	<groupId>org.apache.maven.plugins</groupId>
+	    	<artifactId>maven-surefire-plugin</artifactId>
+	    	<version>3.0.0-M5</version>
+	  </plugin>
       </plugins>    
   
     </build>
     
 	<dependencyManagement>
 	  <dependencies>
-	     <dependency>
-	        <!-- JUnit BOM -->
+	     
+	     <dependency>	        	      
 	         <groupId>org.junit</groupId>
 	         <artifactId>junit-bom</artifactId>
-	         <version>${junit.jupiter.version}</version>
+	         <version>${junit.jupiter.version}</version>	         
 	         <type>pom</type>
-	         <scope>import</scope>
+	         <scope>test</scope>
 	      </dependency>
 	   </dependencies>
 	</dependencyManagement>
@@ -97,13 +132,8 @@
       <dependency>
          <!-- JUnit Jupiter Engine -->
          <groupId>org.junit.jupiter</groupId>
-         <artifactId>junit-jupiter-engine</artifactId>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <!-- JUnit Jupiter Platform -->
-         <groupId>org.junit.platform</groupId>
-         <artifactId>junit-platform-runner</artifactId>
+         <artifactId>junit-jupiter-api</artifactId>
+         <version>${junit.jupiter.version}</version>
          <scope>test</scope>
       </dependency>
 	 </dependencies>

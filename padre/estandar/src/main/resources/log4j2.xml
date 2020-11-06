@@ -19,7 +19,7 @@
    <Loggers>
       <!-- Application log -->
       <Logger name="org.estandar" level="debug" additivity="false">
-         <AppenderRef ref="console" />
+         <AppenderRef ref="file" />
       </Logger>
 
       <Root level="error">
